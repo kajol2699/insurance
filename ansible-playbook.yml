@@ -1,5 +1,5 @@
 - name : Configure Docker on EC2 Instances
-  hosts : 54.249.86.231
+  hosts : 13.201.36.99
   become: true
   connection : ssh
   tasks : 
