@@ -17,7 +17,7 @@
     become_user : root
 
   - name: Deploy Docker Container
-    command: docker run -itd -p 8083:8083 kaju912/insurance:latest
+    command: docker run -itd -p 8081:8081 kaju912/insurance:latest
 
   - name: Copy file from local to remote
     ansible.builtin.copy:
