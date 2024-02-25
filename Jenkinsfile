@@ -32,6 +32,9 @@ pipeline {
         }
       }
     }
-        
+      stage('Code-Deploy') {
+            steps {
+         sshagent(['deploy_user']) {
+           sh "scp -o StrictHostKeyChecking=no /var/lib/jenkins/workspace/ProjectInsurance/target/Insurance-0.0.1-SNAPSHOT.jar ubuntu@172.31.6.4:/home/ubuntu/apache-tomcat-8.5.99/webapps"  
     }
 }
