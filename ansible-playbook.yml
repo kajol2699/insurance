@@ -3,23 +3,7 @@
   become: true
   connection : ssh
   tasks : 
-  - name: updating apt
-    command : sudo apt-get update
-
-  - name : Install Docker
-    command : sudo apt-get install -y docker.io
-    become : yes
-    become_user : root
-
-  - name : Start Docker Service
-    command : sudo systemctl start docker
-    become : yes
-    become_user : root
-
-  - name: Deploy Docker Container
-    command: docker run -itd -p 8081:8081 kaju912/insurance:latest
-
-  - name: Copy file from local to remote
+- name: Copy file from local to remote
     ansible.builtin.copy:
         src: /var/lib/jenkins/workspace/ProjectInsurance/target/Insurance-0.0.1-SNAPSHOT.jar 
         dest: /home/ubuntu/apache-tomcat-8.5.99/webapps/
