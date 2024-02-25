@@ -22,5 +22,5 @@
   - name: Copy file from local to remote
     ansible.builtin.copy:
         src: /var/lib/jenkins/workspace/ProjectInsurance/target/Insurance-0.0.1-SNAPSHOT.jar 
-        dest: /apache-tomcat-8.5.99/webapps/
+        dest: /home/ubuntu/apache-tomcat-8.5.99/webapps/
     
