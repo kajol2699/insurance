@@ -1,5 +1,5 @@
 - name : Configure Docker on EC2 Instances
-  hosts : 172.31.36.254
+  hosts : 172.31.41.81
   become: true
   connection : ssh
   tasks : 
@@ -21,6 +21,6 @@
 
   - name: Copy file from local to remote
     ansible.builtin.copy:
-        src: /var/lib/jenkins/workspace/ProjectInsurance/target/Insurance-0.0.1-SNAPSHOT.war 
+        src: /var/lib/jenkins/workspace/ProjectInsurance/target/Insurance-0.0.1-SNAPSHOT.jar 
         dest: /apache-tomcat-8.5.99/webapps/
     
