@@ -1,10 +1,13 @@
-- name : Configure Docker on EC2 Instances
-  hosts : 172.31.6.4
-  become: true
-  connection : ssh
-  tasks : 
-- name: Copy file from local to remote
-    ansible.builtin.copy:
-        src: /var/lib/jenkins/workspace/ProjectInsurance/target/Insurance-0.0.1-SNAPSHOT.jar 
-        dest: /home/ubuntu/apache-tomcat-8.5.99/webapps/
+---
+- name: Deploy WAR file to Tomcat server
+  hosts: 172.31.44.249
+  become: yes
+
+  tasks:
+    - name: Copy WAR file to Tomcat webapps directory
+      copy:
+        src: /var/lib/jenkins/workspace/ProjectInsurance/target/Insurance-0.0.1-SNAPSHOT.war
+        dest: /opt/apache-tomcat-8.5.99/webapps/
+        remote_src: yes
+      notify: Restart Tomcat
     
