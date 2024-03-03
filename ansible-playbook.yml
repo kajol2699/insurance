@@ -1,13 +1,17 @@
 ---
-- name: Deploy WAR file to Tomcat server
+- name: Deploy WAR file from Ansible master to remote node
   hosts: 172.31.44.249
-  become: yes
-
+  become: true
   tasks:
-    - name: Copy WAR file to Tomcat webapps directory
-      copy:
+    - name: Ensure destination directory exists and set permissions
+      ansible.builtin.file:
+        path: /opt/apache-tomcat-8.5.99/webapps
+        state: directory
+        owner: ubuntu
+        group: ubuntu
+        mode: "0755"
+
+    - name: Copy file
+      ansible.builtin.copy:
         src: /var/lib/jenkins/workspace/ProjectInsurance/target/Insurance-0.0.1-SNAPSHOT.jar
         dest: /opt/apache-tomcat-8.5.99/webapps/
-        remote_src: yes
-      notify: Restart Tomcat
-    
